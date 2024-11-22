@@ -1,0 +1,26 @@
+body{
+    background-color: #DDD3F7;
+}
+.main_heading{
+    color: #aa5da4;
+    font-family: 'Cascadia code';
+    
+}
+#option1, #option2, #option3,#comment{
+    font-family: 'Cascadia code';
+    font-size: larger;
+    color: #aa5da4;
+}
+#inp3,#inp2,#inp1{
+    width: 64px;
+}
+#com_txt{
+    width: 220px;
+    height: 165px;
+}
+#submit_btn{
+    width: 120px;
+    height: 30px;
+    font-family: 'cascadia code';
+    color: #aa5da4;
+}
