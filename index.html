@@ -3,141 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Chandan</title>
+    <title>Chandan Sir</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="main_heading">
-        <h1><big><b><u>Your opinion about Chandan Kundu as.....</u></b></big></h1>
+    <div class="Starter_Heading">
+        <h1>Rate Chandan Sir According to you !</h1>
     </div>
-    <div id="option1">
-        <span>
-            <p><b><h3>Human being :-</h3></b></p>
-        </span>
-        <h5>As a human being the <br>nature, behavior, characteristic, mentality <br>of a person should be good. <br>What do you think about chandan, <br>is he a good person?<br>Rate him according to you out of 100.</h5>
-            <input type="number" name="inp1" id="inp1" min="0" max="100"> <big><b>%</b></big>
+    <div class="rate_paragraph">
+        <h4>
+            -- Give a overall ranking out of 100 to Chandan Sir according to you --
+        </h4>
     </div>
-    <div id="option2">
-        <span>
-            <p><b><h3>Friend :-</h3></b></p>
-            </span>
-            <h5>As a friend, what do you think about chandan? <br>Is chandan a real and helpful friend?<br>Rate him according to you out of 100.</h5>
-            <input type="number" name="inp2" id="inp2" min="0" max="100"> <big><b>%</b></big>
-        </div>
-    <div id="option3">
-        <span>
-            <p><b><h3>Teacher :-</h3></b></p>
-        </span>
-        <h5>As a teacher, the responsibilities of a <br>teacher are to help students succeed in life <br>and give the best advice. <br>What do you think? Is chandan following this?<br>Rate him according to you out of 100.</h5>
-        <input type="number" name="inp3" id="inp3" min="0" max="100"> <big><b>%</b></big>
-    </div>        
-    <div id="comment">
-        <h6><b>If there is any advice for improvement <br>or any suggestions or feedback, you can write here.<br>Your feedback can help chandan improve.</b></h6>
-        <textarea name="comment" id="com_txt" placeholder="Write your comment here...."></textarea>
+    <div class="rate_input">
+        <input type="number" placeholder="0 - 100" name="rate" id="rinp">
+    </div>    
+    <div class="comment_heading">
+        <p><h4>-- If you want to add a comment about Chandan Sir then feel free to write it down below --</h4></p>
     </div>
-    <button type="button" id="submit_btn"><b><big>Submit</big></b></button>
-    
-    <!-- Admin button to view all submissions -->
-    <div id="admin_section" style="margin-top: 20px;">
-        <input type="password" id="admin_password" placeholder="Admin Password">
-        <button type="button" id="admin_btn">View All Submissions</button>
-        <div id="admin_view" style="display: none;"></div>
+    <div class="comment_input">
+        <textarea name="comment" cols="35" rows="9" placeholder="Write you comment here !" id="cinp"></textarea>
     </div>
-
-    <!-- JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Disable form if the user has already submitted data
-            checkUserSubmission();
-
-            // Handle form submission
-            document.getElementById('submit_btn').addEventListener('click', handleFormSubmission);
-
-            // Admin section event listener
-            document.getElementById('admin_btn').addEventListener('click', adminViewSubmissions);
-        });
-
-        // Function to check if the user has already submitted data
-        function checkUserSubmission() {
-            const hasSubmitted = localStorage.getItem('chandanFormSubmitted');
-
-            if (hasSubmitted === 'true') {
-                disableForm();
-                alert('You have already submitted your feedback.');
-            }
-        }
-
-        // Function to handle form submission
-        function handleFormSubmission() {
-            const inp1 = parseInt(document.getElementById('inp1').value, 10);
-            const inp2 = parseInt(document.getElementById('inp2').value, 10);
-            const inp3 = parseInt(document.getElementById('inp3').value, 10);
-            const comment = document.getElementById('com_txt').value;
-
-            // Validate inputs: must be between 0 and 100
-            if (!validateRating(inp1) || !validateRating(inp2) || !validateRating(inp3)) {
-                alert('Please enter a valid rating between 0 and 100 for all fields.');
-                return;
-            }
-
-            // Save data to localStorage
-            saveFormData(inp1, inp2, inp3, comment);
-
-            // Mark form as submitted in localStorage
-            localStorage.setItem('chandanFormSubmitted', 'true');
-
-            // Disable the form after submission
-            disableForm();
-
-            alert('Thank you for your feedback!');
-        }
-
-        // Function to validate if the rating is between 0 and 100
-        function validateRating(value) {
-            return value >= 0 && value <= 100;
-        }
-
-        // Function to save form data (stored as an array of objects in localStorage)
-        function saveFormData(inp1, inp2, inp3, comment) {
-            const submissions = JSON.parse(localStorage.getItem('chandanSubmissions')) || [];
-            const newSubmission = { inp1, inp2, inp3, comment };
-            submissions.push(newSubmission);
-            localStorage.setItem('chandanSubmissions', JSON.stringify(submissions));
-        }
-
-        // Function to disable form fields and the submit button
-        function disableForm() {
-            document.getElementById('inp1').disabled = true;
-            document.getElementById('inp2').disabled = true;
-            document.getElementById('inp3').disabled = true;
-            document.getElementById('com_txt').disabled = true;
-            document.getElementById('submit_btn').disabled = true;
-        }
-
-        // Admin function to view all submissions
-        function adminViewSubmissions() {
-            const password = document.getElementById('admin_password').value;
-            const adminPassword = "admin123"; // Set your admin password here
-
-            if (password === adminPassword) {
-                const submissions = JSON.parse(localStorage.getItem('chandanSubmissions')) || [];
-                let submissionHTML = '<h3>All Submissions:</h3>';
-
-                if (submissions.length === 0) {
-                    submissionHTML += '<p>No submissions yet.</p>';
-                } else {
-                    submissions.forEach((submission, index) => {
-                        submissionHTML += `<p><b>Submission ${index + 1}:</b><br>Human Being Rating: ${submission.inp1}%<br>Friend Rating: ${submission.inp2}%<br>Teacher Rating: ${submission.inp3}%<br>Comment: ${submission.comment}</p>`;
-                    });
-                }
-
-                document.getElementById('admin_view').innerHTML = submissionHTML;
-                document.getElementById('admin_view').style.display = 'block';
-            } else {
-                alert('Invalid password. Access denied.');
-            }
-        }
-    </script>
+    <button class="send_button">Send</button>
 </body>
 </html>
