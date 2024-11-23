@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Starter_Heading">
+        <h1>All Submissions</h1>
+    </div>
+    <div id="submissions-container"></div>
+    <script>
+        fetch('https://backend-ratechandan-submissions-com.onrender.com/submissions')
+            .then(response => response.json())
+            .then(submissions => {
+                const container = document.getElementById("submissions-container");
+
+                if (submissions.length === 0) {
+                    container.innerHTML = "<p>No submissions found.</p>";
+                } else {
+                    submissions.forEach(sub => {
+                        const submissionDiv = document.createElement("div");
+                        submissionDiv.innerHTML = `<p><strong>${sub.user}</strong>: Rating - ${sub.rating}, Comment - ${sub.comment}</p>`;
+                        container.appendChild(submissionDiv);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Failed to load submissions. Please try again later.");
+            });
+    </script>
+</body>
+</html>
