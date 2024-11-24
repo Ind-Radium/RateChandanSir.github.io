@@ -1,5 +1,6 @@
 // Handle the "Submit Rating" logic
 document.querySelector(".send_button").addEventListener("click", () => {
+    const sendButton = document.querySelector(".send_button");
     const ratingInput = document.getElementById("rinp");
     const commentInput = document.getElementById("cinp");
     const rating = parseInt(ratingInput.value, 10);
@@ -10,6 +11,10 @@ document.querySelector(".send_button").addEventListener("click", () => {
         alert("Please enter a rating between 0 and 100.");
         return;
     }
+
+    // Disable the button to prevent multiple submissions
+    sendButton.disabled = true;
+    sendButton.textContent = "Submitting..."; // Optionally change the button text
 
     // Prevent duplicate submissions
     if (localStorage.getItem("hasSubmitted")) {
@@ -38,6 +43,8 @@ document.querySelector(".send_button").addEventListener("click", () => {
         .catch(error => {
             console.error('Error:', error);
             alert("An error occurred while saving your submission.");
+            sendButton.disabled = false; // Re-enable the button if there was an error
+            sendButton.textContent = "Send"; // Reset the button text
         });
 });
 
