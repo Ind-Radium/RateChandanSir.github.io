@@ -10,7 +10,7 @@ document.querySelector(".send_button").addEventListener("click", () => {
         alert("Please enter a rating between 0 and 100.");
         return;
     }
-
+    
     // Prevent duplicate submissions (check localStorage or a session flag)
     function CheckDup() {
         if (localStorage.getItem("hasSubmitted")) {
@@ -35,7 +35,8 @@ document.querySelector(".send_button").addEventListener("click", () => {
     .then(response => response.json())
     .then(data => {
             alert("Your submission has been recorded!");
-            localStorage.setItem("hasSubmitted", "true");  // Mark as submitted
+            localStorage.setItem("hasSubmitted", "true");// Mark as submitted
+            window.location.reload();
             window.location.href = "submitted.html";  // Redirect after submission
         })
         .catch(error => {
@@ -81,5 +82,6 @@ document.querySelector(".send_button").addEventListener("click", () => {
             // Call function to show all submissions
             fetchSubmissionsForAdmin();
         }
+    
     });
         
