@@ -27,15 +27,22 @@
     </div>
     <button class="send_button">Send</button>
     <script>
+        // Check if the user has submitted feedback
         function CheckDup() {
             if (localStorage.getItem("hasSubmitted")) {
                 window.location.href = "al_sub.html";
-                return;
             }
         }
-        window.location.reload();
         CheckDup();
+    
+        // Refresh the page on browser back navigation
+        window.addEventListener("pageshow", (event) => {
+            if (event.persisted) {
+                location.reload();
+            }
+        });
     </script>
     <script src="script.js"></script>
+    
 </body>
 </html>
