@@ -1,0 +1,194 @@
+body {
+    background-color: rgb(47, 241, 225);
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: flex-start; /* Align content to the top */
+    height: 100vh; /* Full viewport height */
+    padding-top: 50px; /* Add space from the top */
+    margin: 0; /* Remove default margin */
+}
+
+
+.Starter_Heading {
+    text-align: center;
+    color: #2a9292;
+    background-color: #79bdeb; /* Inside color of the box */
+    border: 2px solid #2a9292; /* Box border */
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border-radius: 5px;
+}
+
+.rate_paragraph {
+    text-align: center; /* Centers the text */
+    margin-top: 20px; /* Space between the heading and rate section */
+}
+
+.rate_paragraph h4,.comment_heading{
+    margin: 5px 0; /* Add space between lines */
+    color: #2a9292;
+    /* font-family: cascadia code,Arial; */
+}
+
+.rate_input {
+    text-align: center; /* Center the input box */
+    margin-top: 20px; /* Add spacing above */
+}
+
+.rate_input input {
+    width: 200px; /* Adjust the input box width */
+    height: 40px; /* Adjust the input box height */
+    padding: 5px 10px; /* Add inner spacing */
+    border: 2px solid #2a9292; /* Add a border */
+    border-radius: 10px; /* Round the corners */
+    background-color: #ffffff; /* Set background color */
+    font-size: 16px; /* Increase font size */
+    color: #2a9292; /* Text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease-in-out; /* Add a smooth transition for hover/focus effects */
+}
+
+.rate_input input:hover {
+    border-color: #0077ff; /* Change border color on hover */
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.2); /* Enhance shadow on hover */
+}
+
+.rate_input input:focus {
+    border-color: #0077ff; /* Change border color on focus */
+    background-color: #e6f7ff; /* Light background for focus */
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.3); /* Slightly stronger shadow */
+}
+
+.rate_input {
+    text-align: center; /* Center the input and button */
+    margin-top: 20px; /* Space between elements */
+}
+
+.rate_input input {
+    width: 200px;
+    height: 40px;
+    padding: 5px 10px;
+    border: 2px solid #2a9292;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #2a9292;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.rate_input input:hover {
+    border-color: #0077ff;
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.2);
+}
+
+.rate_input input:focus {
+    border-color: #0077ff;
+    background-color: #e6f7ff;
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.3);
+}
+
+/* Styling the Send button */
+.send_button {
+    margin-top: 20px; /* Space between input and button */
+    padding: 12px 30px; /* Button padding */
+    font-size: 18px; /* Text size */
+    color: #ffffff; /* Text color */
+    background: linear-gradient(135deg, #0077ff, #00c6ff); /* Gradient background */
+    border: none; /* Remove default border */
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
+}
+
+.send_button:hover {
+    background: linear-gradient(135deg, #00c6ff, #0077ff); /* Reverse gradient on hover */
+    box-shadow: 0px 6px 10px rgba(0, 119, 255, 0.4); /* Stronger shadow on hover */
+}
+
+.send_button:active {
+    transform: scale(0.98); /* Slightly shrink on click for feedback */
+    box-shadow: 0px 4px 6px rgba(0, 119, 255, 0.3); /* Reduce shadow on click */
+}
+
+.comment_input {
+    text-align: center; /* Center the textarea */
+    margin-top: 20px; /* Space above */
+}
+
+.comment_input textarea {
+    width: 90%; /* Full width but not exceeding page */
+    max-width: 600px; /* Limit max width */
+    height: 150px; /* Height of the textarea */
+    padding: 15px; /* Inner padding for better readability */
+    border: 2px solid #2a9292; /* Border styling */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* Background color */
+    font-size: 16px; /* Larger font for better readability */
+    color: #2a9292; /* Text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    outline: none; /* Remove default focus outline */
+    resize: none; /* Disable resizing for a consistent design */
+    transition: all 0.3s ease-in-out; /* Smooth hover/focus transition */
+}
+
+.comment_input textarea:hover {
+    border-color: #0077ff; /* Border color change on hover */
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.2); /* Enhanced shadow on hover */
+}
+
+.comment_input textarea:focus {
+    border-color: #0077ff; /* Focus border color */
+    background-color: #e6f7ff; /* Focus background color */
+    box-shadow: 0px 4px 8px rgba(0, 119, 255, 0.3); /* Stronger shadow on comment_input textarea::placeholder {
+    color: #a8a8a8; /* Placeholder text color */
+    font-style: italic; /* Makes placeholder text stylish */
+}
+
+/* Notification styles */
+#notification-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align */
+    gap: 10px;
+}
+
+.notification {
+    background: linear-gradient(135deg, #0077ff, #00c6ff);
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    opacity: 0;
+    animation: slideDownFadeOut 4s ease-in-out;
+}
+
+/* Animation for sliding down and fading out */
+@keyframes slideDownFadeOut {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(20px);
+        opacity: 1;
+    }
+    90% {
+        transform: translateY(20px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
