@@ -1,3 +1,26 @@
+// Function to show notifications
+function showNotification(message, type = "info") {
+    const container = document.getElementById("notification-container");
+
+    const notification = document.createElement("div");
+    notification.classList.add("notification");
+    notification.textContent = message;
+
+    // Add type-specific styles
+    if (type === "error") {
+        notification.style.background = "linear-gradient(135deg, #ff4d4d, #ff9999)";
+    } else if (type === "success") {
+        notification.style.background = "linear-gradient(135deg, #4caf50, #a5d6a7)";
+    }
+
+    container.appendChild(notification);
+
+    // Remove notification after animation ends
+    setTimeout(() => {
+        container.removeChild(notification);
+    }, 4000);
+}
+
 // Handle the "Submit Rating" logic
 document.querySelector(".send_button").addEventListener("click", () => {
     const sendButton = document.querySelector(".send_button");
@@ -8,7 +31,7 @@ document.querySelector(".send_button").addEventListener("click", () => {
 
     // Validate rating input
     if (isNaN(rating) || rating < 0 || rating > 100) {
-        alert("Please enter a rating between 0 and 100.");
+        showNotification("Please enter a rating between 0 and 100.", "error");
         return;
     }
 
@@ -18,7 +41,7 @@ document.querySelector(".send_button").addEventListener("click", () => {
 
     // Prevent duplicate submissions
     if (localStorage.getItem("hasSubmitted")) {
-        window.location.href = "al_sub.html";
+        window.location.href = "submitted_again.html";
         return;
     }
 
@@ -36,22 +59,22 @@ document.querySelector(".send_button").addEventListener("click", () => {
     })
         .then(response => response.json())
         .then(() => {
-            alert("Your submission has been recorded!");
+            showNotification("Your submission has been recorded!", "success");
             localStorage.setItem("hasSubmitted", "true"); // Mark as submitted
             window.location.href = "submitted.html"; // Redirect after submission
         })
         .catch(error => {
             console.error('Error:', error);
-            alert("An error occurred while saving your submission.");
+            showNotification("An error occurred while saving your submission.", "error");
             sendButton.disabled = false; // Re-enable the button if there was an error
             sendButton.textContent = "Send"; // Reset the button text
         });
 });
 
-// Redirect user to al_sub.html if they try to access index.html after submission
+// Redirect user to submitted_again.html if they try to access index.html after submission
 function CheckDup() {
     if (localStorage.getItem("hasSubmitted")) {
-        window.location.href = "al_sub.html";
+        window.location.href = "submitted_again.html";
     }
 }
 CheckDup();
@@ -87,7 +110,7 @@ function fetchSubmissionsForAdmin() {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert("Failed to load submissions. Please try again later.");
+            showNotification("Failed to load submissions. Please try again later.", "error");
         });
 }
 

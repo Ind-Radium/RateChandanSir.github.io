@@ -26,11 +26,13 @@
         <textarea name="comment" cols="35" rows="9" placeholder="Write you comment here !" id="cinp"></textarea>
     </div>
     <button class="send_button">Send</button>
+    <div id="notification-container"></div>
+
     <script>
-        // Redirect user to al_sub.html if they already submitted
+        // Redirect user to submitted_again.html if they already submitted
         function CheckDup() {
             if (localStorage.getItem("hasSubmitted")) {
-                window.location.href = "al_sub.html";
+                window.location.href = "submitted_again.html";
             }
         }
     
