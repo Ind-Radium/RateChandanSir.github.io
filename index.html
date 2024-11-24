@@ -26,6 +26,15 @@
         <textarea name="comment" cols="35" rows="9" placeholder="Write you comment here !" id="cinp"></textarea>
     </div>
     <button class="send_button">Send</button>
+    <script>
+        function CheckDup() {
+            if (localStorage.getItem("hasSubmitted")) {
+                window.location.href = "al_sub.html";
+                return;
+            }
+        }
+        CheckDup();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
