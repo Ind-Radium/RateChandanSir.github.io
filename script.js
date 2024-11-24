@@ -36,7 +36,7 @@ document.querySelector(".send_button").addEventListener("click", () => {
     .then(data => {
             alert("Your submission has been recorded!");
             localStorage.setItem("hasSubmitted", "true");// Mark as submitted
-            window.location.reload();
+            location.reload(true);
             window.location.href = "submitted.html";  // Redirect after submission
         })
         .catch(error => {
